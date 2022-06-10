@@ -8,7 +8,7 @@ dependencies {
     api("org.apache.commons:commons-pool2:${commonPool2Version}")
     api("com.alibaba:transmittable-thread-local:${transmittableVersion}")
 
-    implementation("javax.servlet:javax.servlet-api:${javaxServletVersion}")
+    api("javax.servlet:javax.servlet-api:${javaxServletVersion}")
 
     api('org.springframework.boot:spring-boot-starter-json')
     api('org.springframework.boot:spring-boot-starter-log4j2')
