@@ -1,0 +1,16 @@
+group = 'com.zzz.framework'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation project(":framework-starters:framework-core")
+    implementation ("org.apache.velocity:velocity-engine-core:${velocityEngineVersion}")
+    implementation ("mysql:mysql-connector-java:${mysqlVersion}")
+    implementation ("p6spy:p6spy:${p6spyVersion}")
+    implementation ("com.baomidou:mybatis-plus-boot-starter:${mybatisplusVersion}")
+    implementation ("com.baomidou:dynamic-datasource-spring-boot-starter:${dynamicDatasourceVersion}")
+    implementation ("com.baomidou:mybatis-plus-generator:${mybatisplusGeneratorVersion}")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-elasticsearch")
+    implementation("org.springframework.boot:spring-boot-configuration-processor")
+    implementation("org.springframework.boot:spring-boot-autoconfigure")
+}

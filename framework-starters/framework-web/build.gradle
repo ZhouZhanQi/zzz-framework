@@ -1,0 +1,11 @@
+group = 'com.zzz.framework'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation("com.xuxueli:xxl-job-core:${xxlJobVersion}")
+    implementation project(":framework-common:framework-util")
+    implementation project(":framework-starters:framework-core")
+
+    api('org.springframework.boot:spring-boot-starter-web')
+    api('org.springframework.boot:spring-boot-starter-webflux')
+}

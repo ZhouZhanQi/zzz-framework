@@ -1,0 +1,7 @@
+group = 'com.zzz.framework'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation("com.alibaba:easyexcel:${easyexcelVersion}")
+    implementation project(":framework-starters:framework-core")
+}

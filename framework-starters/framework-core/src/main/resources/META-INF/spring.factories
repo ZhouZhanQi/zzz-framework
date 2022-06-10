@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zzz.framework.starter.core.config.JacksonConfiguration, \
+  com.zzz.framework.starter.core.config.RestTemplateConfiguration, \
+  com.zzz.framework.starter.core.config.RequestConfiguration

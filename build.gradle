@@ -1,0 +1,81 @@
+buildscript {
+    ext {
+        springBootVersion = '2.6.3'
+        springCloudVersion = '2021.0.1'
+        mapstructVersion = '1.4.2.Final'
+        lombokMapstructBindingVersion = '0.2.0'
+        lombokVersion = '1.18.22'
+        hutoolVersion = '5.7.5'
+        guavaVersion = '30.1.1-jre'
+        okhttpVersion = '4.9.1'
+        hibernateValidatorVersion = '6.2.0.Final'
+        mybatisplusVersion = '3.4.3.1'
+        mybatisplusGeneratorVersion = '3.5.1'
+        dynamicDatasourceVersion = '3.4.0'
+        p6spyVersion = '3.9.1'
+        mysqlVersion = '8.0.26'
+        xxlJobVersion = '2.3.1'
+        javaxServletVersion = '4.0.1'
+        caffeineVersion = '2.9.2'
+        redissionVersion = '3.16.1'
+        commonLang3Version = '3.12.0'
+        commonPool2Version = '2.10.0'
+        easyexcelVersion = '3.1.1'
+        seataVersion = '1.4.2'
+        transmittableVersion = '2.12.2'
+        velocityEngineVersion = '2.3'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        //用来打包
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'org.springframework.boot' version '2.6.3'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+//    apply plugin: 'io.spring.dependency-management'
+
+    group 'com.zzz.framework'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation("org.projectlombok:lombok:${lombokVersion}")
+        annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+        compileOnly("org.mapstruct:mapstruct:${mapstructVersion}")
+        compileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+    }
+}
+
+subprojects {
+    dependencies {
+        implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+
+        implementation("org.springframework.boot:spring-boot-starter-actuator") {
+            exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
+        }
+
+        annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}", "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
+    }
+}
