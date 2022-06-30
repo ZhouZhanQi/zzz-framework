@@ -22,10 +22,10 @@ public class ZzzThreadPoolTaskExecutor extends ThreadPoolTaskExecutor {
         super.execute(TtlRunnable.get(task));
     }
 
-    @Override
-    public void execute(Runnable task, long startTimeout) {
-        super.execute(TtlRunnable.get(task), startTimeout);
-    }
+//    @Override
+//    public void execute(Runnable task, long startTimeout) {
+//        super.execute(TtlRunnable.get(task), startTimeout);
+//    }
 
     @Override
     public Future<?> submit(Runnable task) {

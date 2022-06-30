@@ -22,16 +22,16 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @RequiredArgsConstructor
-public class RedisCacheHelper {
+public class RedisCacheHelper<T> {
 
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, T> redisTemplate;
 
     /**
      * 获取缓存
      * @param key
      * @return
      */
-    public Object get(RedisKeyPrefix prefix, String key) {
+    public T get(RedisKeyPrefix prefix, String key) {
         return redisTemplate.boundValueOps(getKey(prefix, key)).get();
     }
 
@@ -112,7 +112,7 @@ public class RedisCacheHelper {
      * @param key
      * @param value
      */
-    public void set(RedisKeyPrefix prefix, String key, Object value) {
+    public void set(RedisKeyPrefix prefix, String key, T value) {
         redisTemplate.opsForValue().set(getKey(prefix, key), value);
     }
 
@@ -124,7 +124,7 @@ public class RedisCacheHelper {
      * @param expireTimes
      * @param unit
      */
-    public void set(RedisKeyPrefix prefix, String key, Object value, long expireTimes, TimeUnit unit) {
+    public void set(RedisKeyPrefix prefix, String key, T value, long expireTimes, TimeUnit unit) {
         redisTemplate.opsForValue().set(getKey(prefix, key), value, expireTimes, unit);
     }
 
@@ -135,7 +135,7 @@ public class RedisCacheHelper {
      * @param value
      * @return
      */
-    public boolean setIfAbsent(RedisKeyPrefix prefix, String key, Object value) {
+    public boolean setIfAbsent(RedisKeyPrefix prefix, String key, T value) {
         return redisTemplate.opsForValue().setIfAbsent(getKey(prefix, key), value);
     }
 

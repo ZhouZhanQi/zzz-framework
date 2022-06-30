@@ -5,7 +5,7 @@ dependencies {
     implementation project(":framework-common:framework-util")
     implementation project(":framework-starters:framework-core")
     implementation project(":framework-starters:framework-web")
-    implementation('org.springframework.cloud:spring-cloud-starter-openfeign')
-    implementation('org.springframework.cloud:spring-cloud-loadbalancer')
-    implementation('com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel')
+    api('org.springframework.cloud:spring-cloud-starter-openfeign')
+    api('org.springframework.cloud:spring-cloud-loadbalancer')
+    api('com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel')
 }

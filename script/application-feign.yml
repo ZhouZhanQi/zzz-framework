@@ -1,0 +1,16 @@
+feign:
+  circuitbreaker:
+    enabled: true
+  sentinel:
+    default-rule: default # 全局规则名称
+    rules:
+      # 全局配置，这些参数的意思请查看 com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule
+      # 可配置多条规则
+      default:
+        - grade: 2
+          count: 1
+          timeWindow: 1
+          statIntervalMs: 1000
+          minRequestAmount: 5
+        - grade: 2
+          count: 1

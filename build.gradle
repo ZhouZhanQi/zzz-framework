@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        springBootVersion = '2.6.3'
+        springBootVersion = '2.7.1'
         springCloudVersion = '2021.0.1'
-        springCloudAlibabaVersion = '2021.1'
+        springCloudAlibabaVersion = '2021.0.1.0'
         mapstructVersion = '1.4.2.Final'
         lombokMapstructBindingVersion = '0.2.0'
         lombokVersion = '1.18.22'
@@ -10,9 +10,9 @@ buildscript {
         guavaVersion = '30.1.1-jre'
         okhttpVersion = '4.9.1'
         hibernateValidatorVersion = '6.2.0.Final'
-        mybatisplusVersion = '3.4.3.1'
+        mybatisplusVersion = '3.5.2'
         mybatisplusGeneratorVersion = '3.5.1'
-        dynamicDatasourceVersion = '3.4.0'
+        dynamicDatasourceVersion = '3.5.1'
         p6spyVersion = '3.9.1'
         mysqlVersion = '8.0.26'
         xxlJobVersion = '2.3.1'
@@ -40,20 +40,22 @@ buildscript {
 plugins {
     id 'java'
     id 'java-library'
-    id 'org.springframework.boot' version '2.6.3'
+    id 'maven-publish'
+    id 'org.springframework.boot' version '2.7.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 allprojects {
     apply plugin: 'java'
     apply plugin: 'java-library'
+    apply plugin: 'maven-publish'
 //    apply plugin: 'io.spring.dependency-management'
 
     group 'com.zzz.framework'
     version '1.0-SNAPSHOT'
 
-    sourceCompatibility = 11
-    targetCompatibility = 11
+    sourceCompatibility = 8
+    targetCompatibility = 8
 
     repositories {
         mavenLocal()
@@ -65,6 +67,25 @@ allprojects {
         annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
         compileOnly("org.mapstruct:mapstruct:${mapstructVersion}")
         compileOnly("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+    }
+
+    configurations {
+        all*.exclude group: "org.springframework.boot", module: "spring-boot-starter-logging"
+    }
+
+    /**
+     * 发布jar包
+     */
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                //配置上传源码
+//                artifact sourceJar {
+//                    classifier "sources"
+//                }
+            }
+        }
     }
 }
 
