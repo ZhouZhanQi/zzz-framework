@@ -1,11 +1,11 @@
-package com.zzz.framework.starters.feign.fallback;//package com.shadowlayover.common.feign.fallback;
+//package com.zzz.framework.starters.feign.fallback;
 //
-//import com.shadowlayover.common.core.exceptions.BaseException;
-//import com.shadowlayover.common.core.model.ResponseData;
-//import com.shadowlayover.common.core.model.code.CommonExceptionCode;
+//
+//import com.zzz.framework.common.exceptions.BaseException;
+//import com.zzz.framework.common.model.code.CommonExceptionCode;
+//import com.zzz.framework.starter.core.model.ResponseData;
 //import feign.FeignException;
 //import lombok.AllArgsConstructor;
-//import lombok.RequiredArgsConstructor;
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.cglib.proxy.MethodInterceptor;
 //import org.springframework.cglib.proxy.MethodProxy;
@@ -23,7 +23,7 @@ package com.zzz.framework.starters.feign.fallback;//package com.shadowlayover.co
 // */
 //@Slf4j
 //@AllArgsConstructor
-//public class ShadowlayoverFallback<T> implements MethodInterceptor {
+//public class ZzzFallback<T> implements MethodInterceptor {
 //
 //    private final Class<T> targetType;
 //
@@ -33,7 +33,7 @@ package com.zzz.framework.starters.feign.fallback;//package com.shadowlayover.co
 //
 //    @Override
 //    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-//        log.error(">>> shadowlayover {}.{} feign fallback, service-id: {}, message: {}", targetType.getName(), method.getName(), targetName, cause.getMessage());
+//        log.error(">>> zzz {}.{} feign fallback, service-id: {}, message: {}", targetType.getName(), method.getName(), targetName, cause.getMessage());
 //        Class<?> returnType = method.getReturnType();
 //        //暂时不支持 flux，rx，异步等，返回值不是 R，直接返回 null。
 //        if (ResponseData.class != returnType) {
@@ -45,16 +45,15 @@ package com.zzz.framework.starters.feign.fallback;//package com.shadowlayover.co
 //            BaseException baseException = (BaseException) cause;
 //            return ResponseData.fail(baseException.getCode(), baseException.getMessage());
 //        }
-//
 //        // 非 FeignException
 //        if (!(cause instanceof FeignException)) {
-//            return ResponseData.fail(CommonExceptionCode.ERROR.getCode(), cause.getMessage());
+//            return ResponseData.fail(CommonExceptionCode.SERVICE_ERROR.getCode(), cause.getMessage());
 //        }
 //
 //        FeignException exception = (FeignException) cause;
 //        ByteBuffer content = exception.responseBody().orElse(null);
 //        if (Objects.isNull(content)) {
-//            return ResponseData.fail(CommonExceptionCode.ERROR.getCode(), cause.getMessage());
+//            return ResponseData.fail(CommonExceptionCode.SERVICE_ERROR.getCode(), cause.getMessage());
 //        }
 //        return ResponseData.fail(content.toString());
 //    }
@@ -72,7 +71,7 @@ package com.zzz.framework.starters.feign.fallback;//package com.shadowlayover.co
 //        if (obj == null || getClass() != obj.getClass()) {
 //            return false;
 //        }
-//        ShadowlayoverFallback<?> that = (ShadowlayoverFallback<?>) obj;
+//        ZzzFallback<?> that = (ZzzFallback<?>) obj;
 //        return targetType.equals(that.targetType);
 //    }
 //}

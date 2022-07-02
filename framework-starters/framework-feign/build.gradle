@@ -8,4 +8,6 @@ dependencies {
     api('org.springframework.cloud:spring-cloud-starter-openfeign')
     api('org.springframework.cloud:spring-cloud-loadbalancer')
     api('com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel')
+    //熔断配置
+    api('com.alibaba.cloud:spring-cloud-circuitbreaker-sentinel')
 }

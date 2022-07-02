@@ -25,6 +25,7 @@ buildscript {
         seataVersion = '1.4.2'
         transmittableVersion = '2.12.2'
         velocityEngineVersion = '2.3'
+        springAuthorizationServerVersion = '0.3.1'
     }
 
     repositories {

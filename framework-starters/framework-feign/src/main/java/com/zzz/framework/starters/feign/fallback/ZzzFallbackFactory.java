@@ -1,4 +1,4 @@
-package com.zzz.framework.starters.feign.fallback;//package com.shadowlayover.common.feign.fallback;
+//package com.zzz.framework.starters.feign.fallback;
 //
 //import feign.Target;
 //import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ package com.zzz.framework.starters.feign.fallback;//package com.shadowlayover.co
 // * </pre>
 // */
 //@AllArgsConstructor
-//public class ShadowlayoverFallbackFactory<T> implements FallbackFactory<T> {
+//public class ZzzFallbackFactory<T> implements FallbackFactory<T> {
 //
 //    private final Target<T> target;
 //
@@ -24,7 +24,7 @@ package com.zzz.framework.starters.feign.fallback;//package com.shadowlayover.co
 //        Enhancer enhancer = new Enhancer();
 //        enhancer.setSuperclass(targetType);
 //        enhancer.setUseCache(true);
-//        enhancer.setCallback(new ShadowlayoverFallback<>(targetType, targetName, cause));
+//        enhancer.setCallback(new ZzzFallback<>(targetType, targetName, cause));
 //        return (T) enhancer.create();
 //    }
 //}

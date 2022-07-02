@@ -55,7 +55,6 @@ import java.time.format.DateTimeFormatter;
  * </pre>
  */
 @Configuration(proxyBeanMethods = false)
-@PropertySource(factory = YamlPropertySourceFactory.class, value = "classpath:zzz-feign.yml")
 public class ZzzCommonFeignConfiguration implements InitializingBean {
 
     public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
