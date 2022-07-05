@@ -8,6 +8,7 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.util.StopWatch;
 import reactor.core.publisher.Mono;
 
 import javax.servlet.http.HttpServletResponse;
@@ -56,5 +57,22 @@ public class ResponseUtils {
         DataBuffer dataBuffer = response.bufferFactory().wrap(JacksonUtils.pojo2Json(ResponseData.fail(status.value(), data.toString()))
                 .getBytes(StandardCharsets.UTF_8));
         return response.writeWith(Mono.just(dataBuffer));
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        StopWatch watch = new StopWatch();
+        watch.start("A");
+        Thread.sleep(1000L);
+        watch.stop();
+
+        watch.start("B");
+        Thread.sleep(3000L);
+        watch.stop();
+
+        watch.start("C");
+        Thread.sleep(1500L);
+        watch.stop();
+
+        System.out.println(watch.prettyPrint());
     }
 }

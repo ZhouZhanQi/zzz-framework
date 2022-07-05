@@ -4,6 +4,6 @@ version = '0.0.1-SNAPSHOT'
 dependencies {
     implementation project(":framework-common:framework-util")
     implementation project(":framework-starters:framework-cache")
-    implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.springframework.security:spring-security-oauth2-authorization-server:${springAuthorizationServerVersion}")
+    api("org.springframework.boot:spring-boot-starter-security")
+    api("org.springframework.security:spring-security-oauth2-authorization-server:${springAuthorizationServerVersion}")
 }

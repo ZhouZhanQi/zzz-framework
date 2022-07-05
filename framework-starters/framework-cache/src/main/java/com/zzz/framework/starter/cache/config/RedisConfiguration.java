@@ -79,6 +79,7 @@ public class RedisConfiguration {
 
 
     @Bean
+    @SuppressWarnings("unchecked")
     public RedisCacheHelper redisCacheHelper(RedisTemplate<String, Object> redisTemplate) {
         return new RedisCacheHelper(redisTemplate);
     }
