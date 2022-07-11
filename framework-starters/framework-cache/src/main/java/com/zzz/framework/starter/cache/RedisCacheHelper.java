@@ -163,6 +163,6 @@ public class RedisCacheHelper<T> {
     }
 
     private String getKey(RedisKeyPrefix prefix, String key) {
-        return Joiner.on(":").join(prefix.getPrefix(), StrUtil.isBlank(key) ? "" : key);
+        return Joiner.on(":").join(prefix.key(), StrUtil.isBlank(key) ? "" : key);
     }
 }

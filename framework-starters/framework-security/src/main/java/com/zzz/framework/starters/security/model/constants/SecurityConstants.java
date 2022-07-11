@@ -7,4 +7,7 @@ package com.zzz.framework.starters.security.model.constants;
 public interface SecurityConstants {
     String AUTHORIZATION = "token";
 
+    String CLIENT = "client";
+
+    String NOOP = "{noop}";
 }

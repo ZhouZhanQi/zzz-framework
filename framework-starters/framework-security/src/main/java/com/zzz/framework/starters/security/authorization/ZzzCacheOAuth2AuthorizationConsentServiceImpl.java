@@ -1,11 +1,13 @@
 package com.zzz.framework.starters.security.authorization;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsent;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
 
 /**
  * @author zhouzq
  */
+@RequiredArgsConstructor
 public class ZzzCacheOAuth2AuthorizationConsentServiceImpl implements OAuth2AuthorizationConsentService {
 
     @Override

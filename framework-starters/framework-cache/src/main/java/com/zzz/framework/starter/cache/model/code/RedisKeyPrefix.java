@@ -10,32 +10,18 @@ import lombok.Getter;
  * @desc: 缓存key前缀枚举
  * </pre>
  */
-@Getter
-@AllArgsConstructor
-public enum RedisKeyPrefix {
-
-    OAUTH_SMS_CODE("oauth:sms:code", false),
-    /**
-     * 令牌
-     */
-    OAUTH_ACCESS_TOKEN("oauth:access_token", false),
+public interface RedisKeyPrefix {
 
     /**
-     * 刷新令牌
+     * 缓存key
+     * @return
      */
-    OAUTH_REFRESH_TOKEN("oauth:refresh_token", false),
+    String key();
+
 
     /**
-     * 客户端信息
+     * 是否开启过期通知
+     * @return
      */
-    OAUTH_CLIENT("oauth:client", false),
-
-    /**
-     * 用户信息
-     */
-    OAUTH_TOKEN_USER("oauth:token_user", false),
-    ;
-    private final String prefix;
-
-    private final boolean expiredNotify;
+    Boolean expireNotify();
 }

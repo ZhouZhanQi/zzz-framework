@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.core.OAuth2TokenType;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.time.temporal.ChronoUnit;
