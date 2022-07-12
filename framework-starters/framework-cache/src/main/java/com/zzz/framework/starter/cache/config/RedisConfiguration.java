@@ -101,7 +101,7 @@ public class RedisConfiguration {
         // 序列化时带上Class<T>类型信息
         mapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
         // 字段值为默认值时(如: boolean的false, int的0, string/object的<null>), 忽略该字段, 减少序列化后的字节长度
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
+//        mapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
         // 日期序列化为long
         mapper.enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         // 反序列化时, 忽略不认识的字段, 而不是抛出异常
