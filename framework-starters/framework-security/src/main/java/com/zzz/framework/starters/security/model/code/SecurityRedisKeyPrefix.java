@@ -19,6 +19,10 @@ public enum SecurityRedisKeyPrefix implements RedisKeyPrefix {
      */
     OAUTH_CLIENT("oauth::client", false),
 
+    /**
+     * 授权确认信息
+     */
+    TOKEN_CONSENT("token:consent", false),
     ;
 
     private final String key;
@@ -33,5 +37,10 @@ public enum SecurityRedisKeyPrefix implements RedisKeyPrefix {
     @Override
     public Boolean expireNotify() {
         return this.expireNotify;
+    }
+
+    @Override
+    public String keySuffix(String... params) {
+        return RedisKeyPrefix.super.keySuffix(params);
     }
 }

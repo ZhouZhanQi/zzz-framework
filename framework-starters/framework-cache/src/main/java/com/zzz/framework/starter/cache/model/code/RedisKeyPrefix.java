@@ -1,5 +1,6 @@
 package com.zzz.framework.starter.cache.model.code;
 
+import com.google.common.base.Joiner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -24,4 +25,13 @@ public interface RedisKeyPrefix {
      * @return
      */
     Boolean expireNotify();
+
+    /**
+     * 拼接缓存key
+     * @param params
+     * @return
+     */
+    default String keySuffix(String... params) {
+        return String.join(":", key(), String.join(":", params));
+    }
 }

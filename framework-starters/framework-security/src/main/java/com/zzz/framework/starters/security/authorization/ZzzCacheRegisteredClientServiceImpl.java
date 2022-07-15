@@ -60,7 +60,7 @@ public class ZzzCacheRegisteredClientServiceImpl implements RegisteredClientRepo
 //        // 授权模式
         Optional.ofNullable(clientDetail.getAuthorizedGrantTypes())
                 .ifPresent(grants -> StringUtils.commaDelimitedListToSet(grants)
-                        .forEach(s -> builder.authorizationGrantType(new AuthorizationGrantType(s))));
+                        .forEach(grantType -> builder.authorizationGrantType(new AuthorizationGrantType(grantType))));
         // 回调地址
         Optional.ofNullable(clientDetail.getRedirectUri()).ifPresent(builder::redirectUri);
         // scope

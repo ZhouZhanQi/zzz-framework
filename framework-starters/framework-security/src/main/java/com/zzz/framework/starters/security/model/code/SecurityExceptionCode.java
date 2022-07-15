@@ -20,6 +20,8 @@ public enum SecurityExceptionCode implements BaseExceptionCode {
     TOKEN_TYPE_IS_NULL(70102, "令牌类型不能为空"),
 
     CLIENT_INFO_IS_NULL(70110, "客户端信息不能为空"),
+
+    OAUTH2_AUTHORIZATION_CONSENT_IS_NULL(70201, "授权确认不能为空"),
     ;
 
 
