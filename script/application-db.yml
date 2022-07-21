@@ -4,6 +4,11 @@ zzz-datasource:
     username: root
     password: 931121
     driver-class-name: com.mysql.cj.jdbc.Driver
+  system_master:
+    url: jdbc:mysql://127.0.0.1:13306/zzz_system?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&rewriteBatchedStatements=true
+    username: root
+    password: 931121
+    driver-class-name: com.mysql.cj.jdbc.Driver
 spring:
   datasource:
     dynamic:
