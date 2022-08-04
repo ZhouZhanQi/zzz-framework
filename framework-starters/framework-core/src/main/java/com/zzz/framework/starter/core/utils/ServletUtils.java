@@ -1,8 +1,12 @@
 package com.zzz.framework.starter.core.utils;
 
+import cn.hutool.core.map.MapUtil;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.util.WebUtils;
@@ -49,5 +53,22 @@ public class ServletUtils extends WebUtils {
                 return String.join(",", entry.getValue());
             }));
         }).orElse(Maps.newHashMap());
+    }
+
+    /**
+     * 获取请求参数集合
+     * @param request
+     * @return
+     */
+    public static MultiValueMap<String, String> getServletRequestParamMultiValueMap(ServletRequest request) {
+        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
+        if (MapUtil.isEmpty(request.getParameterMap())) {
+            return paramMap;
+        }
+
+        request.getParameterMap().entrySet().stream().forEach(entry -> {
+            paramMap.addAll(entry.getKey(), Lists.newArrayList(entry.getValue()));
+        });
+        return paramMap;
     }
 }

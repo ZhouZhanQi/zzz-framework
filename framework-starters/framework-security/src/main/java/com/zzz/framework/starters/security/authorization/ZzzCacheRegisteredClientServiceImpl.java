@@ -55,7 +55,7 @@ public class ZzzCacheRegisteredClientServiceImpl implements RegisteredClientRepo
 
         RegisteredClient.Builder builder = RegisteredClient.withId(clientDetail.getClientId())
                 .clientId(clientDetail.getClientId())
-                .clientSecret(SecurityConstants.NOOP + clientDetail.getClientSecret())
+                .clientSecret(clientDetail.getClientSecret())
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC);
 //        // 授权模式
         Optional.ofNullable(clientDetail.getAuthorizedGrantTypes())
