@@ -19,7 +19,6 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.zzz.framework.common.model.code.CommonExceptionCode;
-import com.zzz.framework.starter.core.factory.YamlPropertySourceFactory;
 import com.zzz.framework.starter.core.model.ResponseData;
 import com.zzz.framework.starter.web.utils.ResponseUtils;
 import feign.FeignException;
@@ -37,7 +36,6 @@ import org.springframework.cloud.openfeign.support.SpringDecoder;
 import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -78,7 +76,7 @@ public class ZzzCommonFeignConfiguration implements InitializingBean {
      * @return
      */
     @Bean
-    public BlockExceptionHandler shadowlayoverBlockHandler() {
+    public BlockExceptionHandler zzzBlockHandler() {
         return (httpServletRequest, httpServletResponse, e) -> {
             ResponseData responseData = ResponseData.fail(CommonExceptionCode.SERVICE_ERROR);
             if (e instanceof FlowException) {

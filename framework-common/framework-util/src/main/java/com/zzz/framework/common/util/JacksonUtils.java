@@ -1,6 +1,9 @@
 package com.zzz.framework.common.util;
 
 import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.io.FileUtil;
+import com.alibaba.excel.EasyExcel;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
@@ -13,13 +16,16 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.zzz.framework.common.exceptions.UtilException;
 import lombok.AccessLevel;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -33,13 +39,13 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JacksonUtils {
 
-    public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    public static final ObjectMapper String_MAPPER = new ObjectMapper();
 
     static {
         // 日期序列化为long
-        OBJECT_MAPPER.enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        String_MAPPER.enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         // 反序列化时, 忽略不认识的字段, 而不是抛出异常
-        OBJECT_MAPPER.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        String_MAPPER.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
         // 日期序列化支持LocalDateTime LocalDate
         JavaTimeModule timeModule = new JavaTimeModule();
@@ -55,8 +61,8 @@ public class JacksonUtils {
                 new LocalDateDeserializer(DatePattern.NORM_DATE_FORMATTER));
         timeModule.addDeserializer(LocalTime.class,
                 new LocalTimeDeserializer(DatePattern.NORM_TIME_FORMATTER));
-        OBJECT_MAPPER.registerModule(timeModule);
-        OBJECT_MAPPER.registerModule(new Jdk8Module());
+        String_MAPPER.registerModule(timeModule);
+        String_MAPPER.registerModule(new Jdk8Module());
     }
 
     /**
@@ -68,12 +74,12 @@ public class JacksonUtils {
      */
     public static String readField(String jsonStr, String fieldName) {
         try {
-            JsonNode root = OBJECT_MAPPER.readTree(jsonStr);
+            JsonNode root = String_MAPPER.readTree(jsonStr);
             JsonNode node = root.get(fieldName);
             if (Objects.isNull(node))  {
                 return null;
             }
-            return node.isValueNode() ? node.asText() : OBJECT_MAPPER.writeValueAsString(node);
+            return node.isValueNode() ? node.asText() : String_MAPPER.writeValueAsString(node);
         } catch (IOException e) {
             throw new UtilException("error reading json field", e);
         }
@@ -88,7 +94,7 @@ public class JacksonUtils {
      */
     public static <T> T json2Pojo(String jsonStr, Class<T> clazz) {
         try {
-            return OBJECT_MAPPER.readValue(jsonStr, clazz);
+            return String_MAPPER.readValue(jsonStr, clazz);
         } catch (IOException e) {
             throw new UtilException("error transform json to pojo", e);
         }
@@ -106,7 +112,7 @@ public class JacksonUtils {
      */
     public static <T> T json2Pojo(String jsonStr, TypeReference<T> typeReference) {
         try {
-            return OBJECT_MAPPER.readValue(jsonStr, typeReference);
+            return String_MAPPER.readValue(jsonStr, typeReference);
         } catch (IOException e) {
             throw new UtilException("error transform json to pojo", e);
         }
@@ -119,9 +125,9 @@ public class JacksonUtils {
      * @param jsonStr
      * @return
      */
-    public static Map<String, Object> json2Map(String jsonStr) {
+    public static Map<String, String> json2Map(String jsonStr) {
         try {
-            return OBJECT_MAPPER.readValue(jsonStr, new TypeReference<HashMap<String, Object>>() {});
+            return String_MAPPER.readValue(jsonStr, new TypeReference<HashMap<String, String>>() {});
         } catch (IOException e) {
             throw new UtilException("error transform json to map", e);
         }
@@ -135,7 +141,7 @@ public class JacksonUtils {
      */
     public static String pojo2Json(Object pojo) {
         try {
-            return OBJECT_MAPPER.writeValueAsString(pojo);
+            return String_MAPPER.writeValueAsString(pojo);
         } catch (IOException e) {
             throw new UtilException("error transform pojo to json", e);
         }
@@ -147,7 +153,7 @@ public class JacksonUtils {
      * @param pojo
      * @return
      */
-    public static Map<String, Object> pojo2Map(Object pojo) {
+    public static Map<String, String> pojo2Map(String pojo) {
         return json2Map(pojo2Json(pojo));
     }
 
@@ -162,8 +168,8 @@ public class JacksonUtils {
      */
     public static <T> T json2List(String jsonStr, Class<T> collectionClass, Class<?>... elementClasses) {
         try {
-            JavaType javaType = OBJECT_MAPPER.getTypeFactory().constructParametricType(collectionClass, elementClasses);
-            return OBJECT_MAPPER.readValue(jsonStr, javaType);
+            JavaType javaType = String_MAPPER.getTypeFactory().constructParametricType(collectionClass, elementClasses);
+            return String_MAPPER.readValue(jsonStr, javaType);
         } catch (IOException e) {
             throw new UtilException("error transform to ObjList", e);
         }

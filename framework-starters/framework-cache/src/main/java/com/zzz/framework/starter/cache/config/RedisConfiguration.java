@@ -1,5 +1,6 @@
 package com.zzz.framework.starter.cache.config;
 
+import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -7,6 +8,14 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.zzz.framework.starter.cache.RedisCacheHelper;
 import com.zzz.framework.starter.cache.layer.ZzzRedisCacheManager;
 import com.zzz.framework.starter.cache.props.CacheRedisCaffeineProperties;
@@ -26,6 +35,9 @@ import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSeriali
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -91,6 +103,9 @@ public class RedisConfiguration {
      */
     public GenericJackson2JsonRedisSerializer newJsonRedisSerializer() {
         ObjectMapper mapper = new ObjectMapper();
+        JavaTimeModule timeModule = new JavaTimeModule();
+        mapper.registerModule(timeModule);
+        mapper.registerModule(new Jdk8Module());
         // 按照field来序列化, 忽略constructors/factory,setXXX()/getXXX()/isXXX()表示的属性
         mapper.setVisibility(mapper.getVisibilityChecker()
                 .withFieldVisibility(JsonAutoDetect.Visibility.ANY)

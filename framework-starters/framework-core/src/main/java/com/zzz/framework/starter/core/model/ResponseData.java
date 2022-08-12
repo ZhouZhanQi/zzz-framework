@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.zzz.framework.common.model.code.BaseExceptionCode;
 import com.zzz.framework.common.util.JacksonUtils;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 import java.nio.charset.StandardCharsets;
@@ -20,6 +21,7 @@ import java.nio.charset.StandardCharsets;
  * </pre>
  */
 @Data
+@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({"success", "data", "securityData", "errCode", "errMsg", "errDetail"})
