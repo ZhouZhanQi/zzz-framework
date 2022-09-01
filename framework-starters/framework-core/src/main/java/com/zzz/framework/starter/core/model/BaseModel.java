@@ -1,12 +1,12 @@
-package com.zzz.framework.starter.data.model;
+package com.zzz.framework.starter.core.model;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.zzz.framework.starter.core.model.BaseDomain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class BaseModel extends BaseDomain {
+public class BaseModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

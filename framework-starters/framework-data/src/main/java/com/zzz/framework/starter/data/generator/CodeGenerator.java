@@ -3,7 +3,7 @@ package com.zzz.framework.starter.data.generator;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.zzz.framework.starter.data.model.BaseModel;
+import com.zzz.framework.starter.core.model.BaseModel;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
