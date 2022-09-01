@@ -1,5 +1,7 @@
 package com.zzz.framework.starter.core.model;
 
+import lombok.ToString;
+
 import java.io.Serializable;
 
 /**
@@ -9,6 +11,7 @@ import java.io.Serializable;
  * @desc: 基础关联数据模型
  * </pre>
  */
+@ToString
 public class BaseDTO implements Serializable {
     private static final long serialVersionUID = 4474889810332553426L;
 }

@@ -6,7 +6,7 @@ buildscript {
         mapstructVersion = '1.4.2.Final'
         lombokMapstructBindingVersion = '0.2.0'
         lombokVersion = '1.18.22'
-        hutoolVersion = '5.7.5'
+        hutoolVersion = '5.8.5'
         guavaVersion = '30.1.1-jre'
         okhttpVersion = '4.9.1'
         hibernateValidatorVersion = '6.2.0.Final'
