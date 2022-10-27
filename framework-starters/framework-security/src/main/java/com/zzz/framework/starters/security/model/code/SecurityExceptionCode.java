@@ -22,6 +22,8 @@ public enum SecurityExceptionCode implements BaseExceptionCode {
     CLIENT_INFO_IS_NULL(70110, "客户端信息不能为空"),
 
     OAUTH2_AUTHORIZATION_CONSENT_IS_NULL(70201, "授权确认不能为空"),
+
+    TOKEN_INFO_TIMEOUT(70301, "token超时"),
     ;
 
 

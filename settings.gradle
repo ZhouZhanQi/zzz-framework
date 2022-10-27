@@ -1,5 +1,6 @@
 rootProject.name = 'zzz-framework'
 include 'framework-common:framework-util'
+include 'framework-common:framework-cdc'
 include 'framework-starters:framework-core'
 include 'framework-starters:framework-cache'
 include 'framework-starters:framework-data'

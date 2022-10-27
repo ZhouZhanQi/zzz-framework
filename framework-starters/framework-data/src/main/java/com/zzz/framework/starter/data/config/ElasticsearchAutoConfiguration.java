@@ -8,4 +8,7 @@ package com.zzz.framework.starter.data.config;
  * </pre>
  */
 public class ElasticsearchAutoConfiguration {
+
+    public static void main(String[] args) {
+    }
 }

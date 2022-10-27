@@ -78,4 +78,10 @@ public class MybatisPlusAutoConfiguration {
     public MyMetaObjectHandler metaObjectHandler() {
         return new MyMetaObjectHandler();
     }
+
+
+
+
+
+
 }

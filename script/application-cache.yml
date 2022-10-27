@@ -1,5 +1,10 @@
 spring:
   redis:
-    host: 127.0.0.1
-    port: 16379
-    password: 931121
+    redisson:
+      config: |
+        singleServerConfig:
+          address: "redis://127.0.0.1:16379"
+          database: 1
+        threads: 0
+        nettyThreads: 0
+        transportMode: "NIO"

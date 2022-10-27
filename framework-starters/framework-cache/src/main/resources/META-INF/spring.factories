@@ -1,2 +1,2 @@
-#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-#  ZzzAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.zzz.framework.starter.cache.config.RedisConfiguration
