@@ -1,4 +1,4 @@
-package com.zzz.framework.starters.security.model.constants;
+package com.zzz.framework.starter.security.model.constants;
 
 /**
  * 静态常量

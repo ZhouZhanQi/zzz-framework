@@ -1,11 +1,10 @@
-package com.zzz.framework.starters.security.authorization;
+package com.zzz.framework.starter.security.authorization;
 
 import com.zzz.framework.common.util.AssertUtils;
 import com.zzz.framework.starter.cache.RedisCacheHelper;
-import com.zzz.framework.starters.security.model.bo.ClientDetailBo;
-import com.zzz.framework.starters.security.model.code.SecurityExceptionCode;
-import com.zzz.framework.starters.security.model.code.SecurityRedisKeyPrefix;
-import com.zzz.framework.starters.security.model.constants.SecurityConstants;
+import com.zzz.framework.starter.security.model.code.SecurityRedisKeyPrefix;
+import com.zzz.framework.starter.security.model.bo.ClientDetailBo;
+import com.zzz.framework.starter.security.model.code.SecurityExceptionCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;

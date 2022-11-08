@@ -1,4 +1,4 @@
-package com.zzz.framework.starters.security.model.code;
+package com.zzz.framework.starter.security.model.code;
 
 import com.zzz.framework.starter.cache.model.code.RedisKeyPrefix;
 import lombok.AllArgsConstructor;

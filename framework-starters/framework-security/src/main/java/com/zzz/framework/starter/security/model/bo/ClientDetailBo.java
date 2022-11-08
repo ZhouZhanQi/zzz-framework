@@ -1,4 +1,4 @@
-package com.zzz.framework.starters.security.model.bo;
+package com.zzz.framework.starter.security.model.bo;
 
 import java.io.Serial;
 import java.io.Serializable;

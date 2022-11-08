@@ -23,7 +23,7 @@ import java.util.Set;
  * @date 2021/7/22 10:11 上午
  * @desc mybatisplus自动装配
  */
-@Configuration
+@Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(ZzzMybatisPlusProperties.class)
 public class MybatisPlusAutoConfiguration {
 

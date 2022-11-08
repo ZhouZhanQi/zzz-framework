@@ -1,4 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.zzz.framework.starters.security.authorization.ZzzCacheRegisteredClientServiceImpl,\
-    com.zzz.framework.starters.security.authorization.ZzzCacheOauth2AuthorizationServiceImpl,\
-    com.zzz.framework.starters.security.authorization.ZzzCacheOAuth2AuthorizationConsentServiceImpl
+    com.zzz.framework.starter.security.authorization.ZzzCacheRegisteredClientServiceImpl,\
+    com.zzz.framework.starter.security.authorization.ZzzCacheOauth2AuthorizationServiceImpl,\
+    com.zzz.framework.starter.security.authorization.ZzzCacheOAuth2AuthorizationConsentServiceImpl

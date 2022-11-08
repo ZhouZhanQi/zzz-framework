@@ -1,4 +1,4 @@
-package com.zzz.framework.starters.security.model.code;
+package com.zzz.framework.starter.security.model.code;
 
 import com.zzz.framework.common.model.code.BaseExceptionCode;
 import lombok.AllArgsConstructor;

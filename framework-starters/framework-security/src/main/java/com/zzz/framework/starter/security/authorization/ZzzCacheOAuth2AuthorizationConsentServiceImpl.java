@@ -1,10 +1,10 @@
-package com.zzz.framework.starters.security.authorization;
+package com.zzz.framework.starter.security.authorization;
 
 import cn.hutool.core.util.StrUtil;
 import com.zzz.framework.common.util.AssertUtils;
 import com.zzz.framework.starter.cache.RedisCacheHelper;
-import com.zzz.framework.starters.security.model.code.SecurityExceptionCode;
-import com.zzz.framework.starters.security.model.code.SecurityRedisKeyPrefix;
+import com.zzz.framework.starter.security.model.code.SecurityExceptionCode;
+import com.zzz.framework.starter.security.model.code.SecurityRedisKeyPrefix;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsent;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
