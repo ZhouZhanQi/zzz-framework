@@ -1,13 +1,15 @@
 package com.zzz.framework.common.util;
 
 import com.zzz.framework.common.model.ValidResult;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.spi.ValidationProvider;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.HibernateValidator;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;

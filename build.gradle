@@ -26,7 +26,9 @@ buildscript {
         transmittableVersion = '2.12.2'
         velocityEngineVersion = '2.3'
         redissonVersion = '3.17.6'
-        springAuthorizationServerVersion = '1.0.2'
+        validationVersion = '3.0.2'
+        validatorVersion = '8.0.0.Final'
+        springAuthorizationServerVersion = '0.4.2'
     }
 
     repositories {
