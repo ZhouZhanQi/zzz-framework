@@ -51,8 +51,7 @@ public enum RedisConnectionEnum {
 
     /**
      * 根据类型获取连接枚举
-     * @param type
-     * @return
+     * @param type connection type
      */
     public static RedisConnectionEnum fromType(String type) {
         return Arrays.stream(RedisConnectionEnum.values())

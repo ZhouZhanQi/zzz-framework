@@ -8,11 +8,11 @@ import com.zzz.framework.starter.security.model.code.SecurityExceptionCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
-import org.springframework.security.oauth2.core.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.config.ClientSettings;
-import org.springframework.security.oauth2.server.authorization.config.TokenSettings;
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.util.StringUtils;
 
 import java.time.Duration;
@@ -27,12 +27,12 @@ public class ZzzCacheRegisteredClientServiceImpl implements RegisteredClientRepo
     /**
      * 刷新令牌有效期默认 30 天
      */
-    private final static int refreshTokenValiditySeconds = 60 * 60 * 24 * 30;
+    private final static int REFRESH_TOKEN_VALIDITY_SECONDS = 60 * 60 * 24 * 30;
 
     /**
      * 请求令牌有效期默认 12 小时
      */
-    private final static int accessTokenValiditySeconds = 60 * 60 * 12;
+    private final static int ACCESS_TOKEN_VALIDITY_SECONDS = 60 * 60 * 12;
 
     private final RedisCacheHelper<ClientDetailBo> redisCacheHelper;
 
@@ -65,8 +65,8 @@ public class ZzzCacheRegisteredClientServiceImpl implements RegisteredClientRepo
         // scope
         Optional.ofNullable(clientDetail.getScope()).ifPresent(builder::scope);
         return builder.tokenSettings(TokenSettings.builder().accessTokenFormat(OAuth2TokenFormat.REFERENCE)
-                        .accessTokenTimeToLive(Duration.ofSeconds(Optional.ofNullable(clientDetail.getAccessTokenValidity()).orElse(accessTokenValiditySeconds)))
-                        .refreshTokenTimeToLive(Duration.ofSeconds(Optional.ofNullable(clientDetail.getRefreshTokenValidity()).orElse(refreshTokenValiditySeconds)))
+                        .accessTokenTimeToLive(Duration.ofSeconds(Optional.ofNullable(clientDetail.getAccessTokenValidity()).orElse(ACCESS_TOKEN_VALIDITY_SECONDS)))
+                        .refreshTokenTimeToLive(Duration.ofSeconds(Optional.ofNullable(clientDetail.getRefreshTokenValidity()).orElse(REFRESH_TOKEN_VALIDITY_SECONDS)))
                         .build())
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(!clientDetail.getAutoapprove()).build())
                 .build();

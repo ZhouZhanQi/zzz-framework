@@ -15,21 +15,18 @@ public interface RedisKeyPrefix {
 
     /**
      * 缓存key
-     * @return
      */
     String key();
 
 
     /**
      * 是否开启过期通知
-     * @return
      */
     Boolean expireNotify();
 
     /**
      * 拼接缓存key
      * @param params
-     * @return
      */
     default String keySuffix(String... params) {
         return String.join(":", key(), String.join(":", params));

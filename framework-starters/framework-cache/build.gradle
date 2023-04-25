@@ -3,11 +3,11 @@ version = '0.0.1-SNAPSHOT'
 
 dependencies {
     implementation project(":framework-common:framework-util")
-    api("com.github.ben-manes.caffeine:caffeine:${caffeineVersion}")
+//    api("com.github.ben-manes.caffeine:caffeine:${caffeineVersion}")
     api("org.springframework.boot:spring-boot-starter-cache")
     api("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework.boot:spring-boot-autoconfigure")
-    implementation("org.redisson:redisson-spring-boot-starter:${redissonVersion}")
+//    api("org.redisson:redisson-spring-boot-starter:${redissonVersion}")
 }
 

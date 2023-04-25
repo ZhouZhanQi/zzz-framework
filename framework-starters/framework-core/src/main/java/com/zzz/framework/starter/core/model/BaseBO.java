@@ -2,6 +2,7 @@ package com.zzz.framework.starter.core.model;
 
 import lombok.ToString;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -13,5 +14,7 @@ import java.io.Serializable;
  */
 @ToString
 public class BaseBO implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 728099976336627151L;
 }

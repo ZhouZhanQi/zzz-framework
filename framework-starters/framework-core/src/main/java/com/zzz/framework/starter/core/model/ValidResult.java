@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ValidResult implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 3646800555540682885L;
 
     /**
@@ -66,7 +69,6 @@ public class ValidResult implements Serializable {
 
     /**
      * 获取快速失败消息
-     * @return
      */
     public String getFailFastMsg() {
         return String.format("%s:%s", this.paramName, this.paramErrorMsg);

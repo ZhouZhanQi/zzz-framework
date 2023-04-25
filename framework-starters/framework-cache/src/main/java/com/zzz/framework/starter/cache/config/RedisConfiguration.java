@@ -9,11 +9,11 @@ import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zzz.framework.starter.cache.RedisCacheHelper;
-import org.redisson.spring.data.connection.RedissonConnectionFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
@@ -38,11 +38,11 @@ public class RedisConfiguration {
     @Bean
     @Primary
     @ConditionalOnMissingBean(name = "redisTemplate")
-    public RedisTemplate<String, Object> redisTemplate(RedissonConnectionFactory redissonConnectionFactory) {
+    public RedisTemplate<String, Object> redisTemplate(LettuceConnectionFactory lettuceConnectionFactory) {
         GenericJackson2JsonRedisSerializer serializer = newJsonRedisSerializer();
         //创建Redis缓存操作助手RedisTemplate对象
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(redissonConnectionFactory);
+        redisTemplate.setConnectionFactory(lettuceConnectionFactory);
 
         // 设置value的序列化规则
         // 默认的GenericJackson2JsonRedisSerializer对特殊的类型的反序列化会有问题，所以需要调整ObjectMapper的规则
@@ -58,16 +58,16 @@ public class RedisConfiguration {
 
     @Bean(name = "stringRedisTemplate")
     @ConditionalOnMissingBean(StringRedisTemplate.class)
-    public StringRedisTemplate stringRedisTemplate(RedissonConnectionFactory redissonConnectionFactory) {
+    public StringRedisTemplate stringRedisTemplate(LettuceConnectionFactory lettuceConnectionFactory) {
         StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
-        stringRedisTemplate.setConnectionFactory(redissonConnectionFactory);
+        stringRedisTemplate.setConnectionFactory(lettuceConnectionFactory);
         stringRedisTemplate.afterPropertiesSet();
         return stringRedisTemplate;
     }
 
 
-    @Bean
     @SuppressWarnings("unchecked")
+    @Bean
     public RedisCacheHelper redisCacheHelper(RedisTemplate<String, Object> redisTemplate) {
         return new RedisCacheHelper(redisTemplate);
     }

@@ -71,4 +71,14 @@ public class ServletUtils extends WebUtils {
         });
         return paramMap;
     }
+
+
+    public static void main(String[] args) {
+        String str = null;
+
+
+
+
+        System.out.println(Optional.ofNullable(str).orElse("").isBlank());
+    }
 }

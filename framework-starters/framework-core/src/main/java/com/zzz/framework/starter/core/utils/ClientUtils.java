@@ -26,7 +26,7 @@ public class ClientUtils {
     public static <T> ResponseData<T> serviceCall(ResponseData<T> responseData) {
         Optional<ResponseData<T>> optional = Optional.ofNullable(responseData);
         optional.orElseThrow(() -> new FrameworkException(CoreExceptionCode.SERVICE_CIRCUIT_BREAKER, "", ZzzThreadContext.getContext().getTraceId()));
-        return optional.filter(response -> response.isSuccess()).orElseThrow(() -> {
+        return optional.filter(ResponseData::isSuccess).orElseThrow(() -> {
             ResponseData<T> response = optional.get();
             return new BusinessException(response.getErrMsg(), response.getErrCode());
         });
@@ -50,9 +50,7 @@ public class ClientUtils {
     public static <T> T serviceCallData(ResponseData<T> responseData) {
         Optional<ResponseData<T>> optional = Optional.ofNullable(responseData);
         optional.orElseThrow(() -> new FrameworkException(CoreExceptionCode.SERVICE_CIRCUIT_BREAKER, "", ZzzThreadContext.getContext().getTraceId()));
-        return optional.filter(response -> response.isSuccess()).map(response -> {
-            return response.getData();
-        }).orElseThrow(() -> {
+        return optional.filter(ResponseData::isSuccess).map(ResponseData::getData).orElseThrow(() -> {
             ResponseData<T> response = optional.get();
             return new BusinessException(response.getErrMsg(), response.getErrCode());
         });
@@ -66,11 +64,9 @@ public class ClientUtils {
      */
     public static <T> T serviceCallDataNoThrow(ResponseData<T> responseData) {
         Optional<ResponseData<T>> optional = Optional.ofNullable(responseData);
-        if (!optional.isPresent()) {
+        if (optional.isEmpty()) {
             return null;
         }
-        return optional.filter(response -> response.isSuccess()).map(response -> {
-            return response.getData();
-        }).orElse(null);
+        return optional.filter(ResponseData::isSuccess).map(ResponseData::getData).orElse(null);
     }
 }

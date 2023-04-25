@@ -1,5 +1,6 @@
 package com.zzz.framework.starter.core.model;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,7 +10,6 @@ import com.zzz.framework.common.model.code.BaseExceptionCode;
 import com.zzz.framework.common.util.JacksonUtils;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 
 import java.nio.charset.StandardCharsets;
 
@@ -128,15 +128,15 @@ public class ResponseData<T> {
 
     public void setData(T data) {
         //不加密
-        if (StringUtils.isBlank(securityKey)) {
+        if (StrUtil.isBlank(securityKey)) {
             this.data = data;
             return;
         }
 
         String encryptData;
         //加密
-        if (data instanceof String) {
-            encryptData = String.valueOf(data);
+        if (data instanceof String sourceData) {
+            encryptData = sourceData;
         } else {
             encryptData = JacksonUtils.pojo2Json(data);
         }

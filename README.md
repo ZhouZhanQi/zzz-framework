@@ -1,3 +1,8 @@
+nacos:
+
+key: b3Z0Ym1vOTYxZXB1enZnZjN1NjkyeWZ5d3AwenludHY=
+value: eHkxYXVqNHFiYTZ3Z2w3eWs0NGVucnF2Y2tkajh1enU=
+
 ### 模块划分
 * common-core
 

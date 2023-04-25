@@ -37,4 +37,12 @@ public class CodeGenerator {
                         .enableBaseColumnList().enableBaseResultMap().controllerBuilder().enableRestStyle())
                 .execute();
     }
+
+    public static void main(String[] args) {
+        generatorCode("Zzz", "jdbc:mysql://127.0.0.1:13306/countries_cities", "root", "12345678");
+    }
 }
+
+//D:\UwellProjects\pingcode-migrate\pingcode-migrate
+//com.uwell.pingcode
+//cities,countries,states,uwell_cities

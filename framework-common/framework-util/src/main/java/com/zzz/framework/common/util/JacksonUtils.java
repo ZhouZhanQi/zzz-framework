@@ -1,6 +1,8 @@
 package com.zzz.framework.common.util;
 
 import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.util.RandomUtil;
+import cn.hutool.crypto.symmetric.AES;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
@@ -19,12 +21,16 @@ import com.zzz.framework.common.exceptions.UtilException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import javax.crypto.KeyGenerator;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -145,63 +151,6 @@ public class JacksonUtils {
         } catch (IOException e) {
             throw new UtilException("error transform pojo to json", e);
         }
-    }
-
-
-    public static void main(String[] args) {
-
-//        List<DemoData> sourceList = Lists.newArrayList();
-//        EasyExcel.read("/Users/pxx/Desktop/abcd.xlsx", DemoData.class, new ReadListener<DemoData>() {
-//            @Override
-//            public void invoke(DemoData o, AnalysisContext analysisContext) {
-//                sourceList.add(o);
-//            }
-//
-//            @Override
-//            public void doAfterAllAnalysed(AnalysisContext analysisContext) {
-//
-//            }
-//        }).sheet().doRead();
-//
-//        List<Demo2Data> targetDataList = Lists.newArrayList();
-//        sourceList.stream().forEach(data -> {
-//            targetDataList.add(new Demo2Data(data.getDriver_name(), null, null, "156", "201",
-//                    data.getId_card().replaceAll("\'", ""), "6410", "10101", "101016703", "", "2022/09/01", "2022/10/01",
-//                    new BigDecimal(data.getAmount()).movePointLeft(2).toString(), "0.03", "0", "0", "0", null,
-//                    null, null, null, "0", "0", null, null, null, "0001042808"));
-//
-//            targetDataList.add(new Demo2Data(data.getDriver_name(), null, null, "156", "201",
-//                    data.getId_card().replaceAll("\'", ""), "6410", "10101", "101016703", "", "2022/09/01", "2022/10/01",
-//                    new BigDecimal(data.getAmount()).movePointLeft(2).toString(), "0.01", "0", "0", "0", null,
-//                    null, null, null, "0", "0", null, null, null, null));
-//
-//            targetDataList.add(new Demo2Data(data.getDriver_name(), null, null, "156", "201",
-//                    data.getId_card().replaceAll("\'", ""), "6410", "10101", "101016703", "", "2022/09/01", "2022/10/01",
-//                    new BigDecimal(data.getAmount()).movePointLeft(2).toString(), "0.07", "0", "0", "0", null,
-//                    null, null, null, "0", "0", null, null, null, null));
-//
-//            targetDataList.add(new Demo2Data(data.getDriver_name(), null, null, "156", "201",
-//                    data.getId_card().replaceAll("\'", ""), "6410", "10101", "101016703", "", "2022/09/01", "2022/10/01",
-//                    new BigDecimal(data.getAmount()).movePointLeft(2).toString(), "0.03", "0", "0", "0", null,
-//                    null, null, null, "0", "0", null, null, null, null));
-//
-//            targetDataList.add(new Demo2Data(data.getDriver_name(), null, null, "156", "201",
-//                    data.getId_card().replaceAll("\'", ""), "6410", "10101", "101016703", "", "2022/09/01", "2022/10/01",
-//                    new BigDecimal(data.getAmount()).movePointLeft(2).toString(), "0.02", "0", "0", "0", null,
-//                    null, null, null, "0", "0", null, null, null, null));
-//
-//        });
-//        EasyExcel.write(new File("/Users/pxx/Desktop/20221008-委托代征.xlsx"), Demo2Data.class).sheet(0).doWrite(targetDataList);
-
-
-
-//        System.out.println(ChronoUnit.SECONDS.between(LocalDateTime.now().plusSeconds(100), LocalDateTime.now()));
-//
-//        String encode = URLEncoder.encode("https://dev-h5.pxxtech.com/dividual/");
-//        System.out.println(encode);
-
-
-        System.out.println(Integer.parseInt("11", 8));
     }
 
     /**

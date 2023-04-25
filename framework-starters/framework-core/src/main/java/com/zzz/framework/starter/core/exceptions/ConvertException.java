@@ -4,6 +4,8 @@ import cn.hutool.core.util.StrUtil;
 import com.zzz.framework.common.exceptions.BaseException;
 import com.zzz.framework.common.model.code.BaseExceptionCode;
 
+import java.io.Serial;
+
 /**
  * <pre>
  * @author: zhouzhanqi
@@ -13,6 +15,7 @@ import com.zzz.framework.common.model.code.BaseExceptionCode;
  */
 public class ConvertException extends BaseException {
 
+    @Serial
     private static final long serialVersionUID = 2428134591820168372L;
 
     public ConvertException() {
