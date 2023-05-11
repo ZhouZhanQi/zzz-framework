@@ -9,7 +9,10 @@ import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zzz.framework.starter.cache.RedisCacheHelper;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -28,6 +31,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * </pre>
  */
 @Configuration(proxyBeanMethods = false)
+@AutoConfigureBefore(RedisAutoConfiguration.class)
 public class RedisConfiguration {
 
     /**
@@ -66,10 +70,9 @@ public class RedisConfiguration {
     }
 
 
-    @SuppressWarnings("unchecked")
     @Bean
     public RedisCacheHelper redisCacheHelper(RedisTemplate<String, Object> redisTemplate) {
-        return new RedisCacheHelper(redisTemplate);
+        return new RedisCacheHelper<>(redisTemplate);
     }
 
     /**

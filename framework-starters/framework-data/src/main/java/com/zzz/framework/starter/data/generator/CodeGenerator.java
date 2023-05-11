@@ -39,7 +39,7 @@ public class CodeGenerator {
     }
 
     public static void main(String[] args) {
-        generatorCode("Zzz", "jdbc:mysql://127.0.0.1:13306/countries_cities", "root", "12345678");
+        generatorCode("Zzz", "jdbc:mysql://127.0.0.1:13306/d_uwell", "root", "12345678");
     }
 }
 

@@ -1,4 +1,4 @@
-package com.zzz.framework.starter.cache.model.code;
+package com.zzz.framework.starter.core.model.code;
 
 import com.google.common.base.Joiner;
 import lombok.AllArgsConstructor;

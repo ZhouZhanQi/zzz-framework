@@ -1,8 +1,7 @@
 package com.zzz.framework.starter.security.model.code;
 
-import com.zzz.framework.starter.cache.model.code.RedisKeyPrefix;
+import com.zzz.framework.starter.core.model.code.RedisKeyPrefix;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 /**
  * @author: zhouzq
@@ -23,6 +22,8 @@ public enum SecurityRedisKeyPrefix implements RedisKeyPrefix {
      * 授权确认信息
      */
     TOKEN_CONSENT("token:consent", false),
+
+    TOKEN_INFO("token:info", false),
     ;
 
     private final String key;

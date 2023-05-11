@@ -1,11 +1,21 @@
 package com.zzz.framework.starter.security.authorization;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zzz.framework.common.util.AssertUtils;
 import com.zzz.framework.starter.cache.RedisCacheHelper;
 import com.zzz.framework.starter.security.model.code.SecurityRedisKeyPrefix;
 import com.zzz.framework.starter.security.model.bo.ClientDetailBo;
 import com.zzz.framework.starter.security.model.code.SecurityExceptionCode;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;

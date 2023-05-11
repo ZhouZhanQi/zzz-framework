@@ -3,7 +3,9 @@ version = '0.0.1-SNAPSHOT'
 
 dependencies {
     implementation project(":framework-common:framework-util")
+    implementation project(":framework-common:framework-util")
 //    api("com.github.ben-manes.caffeine:caffeine:${caffeineVersion}")
+    implementation project(":framework-starters:framework-core")
     api("org.springframework.boot:spring-boot-starter-cache")
     api("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-configuration-processor")

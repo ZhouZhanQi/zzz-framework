@@ -1,8 +1,6 @@
 package com.zzz.framework.common.util;
 
 import cn.hutool.core.date.DatePattern;
-import cn.hutool.core.util.RandomUtil;
-import cn.hutool.crypto.symmetric.AES;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
@@ -21,16 +19,10 @@ import com.zzz.framework.common.exceptions.UtilException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import javax.crypto.KeyGenerator;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -45,13 +37,13 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JacksonUtils {
 
-    public static final ObjectMapper STRING_MAPPER = new ObjectMapper();
+    public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     static {
         // 日期序列化为long
-        STRING_MAPPER.enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        OBJECT_MAPPER.enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         // 反序列化时, 忽略不认识的字段, 而不是抛出异常
-        STRING_MAPPER.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        OBJECT_MAPPER.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
         // 日期序列化支持LocalDateTime LocalDate
         JavaTimeModule timeModule = new JavaTimeModule();
@@ -67,8 +59,8 @@ public class JacksonUtils {
                 new LocalDateDeserializer(DatePattern.NORM_DATE_FORMATTER));
         timeModule.addDeserializer(LocalTime.class,
                 new LocalTimeDeserializer(DatePattern.NORM_TIME_FORMATTER));
-        STRING_MAPPER.registerModule(timeModule);
-        STRING_MAPPER.registerModule(new Jdk8Module());
+        OBJECT_MAPPER.registerModule(timeModule);
+        OBJECT_MAPPER.registerModule(new Jdk8Module());
     }
 
     /**
@@ -80,12 +72,12 @@ public class JacksonUtils {
      */
     public static String readField(String jsonStr, String fieldName) {
         try {
-            JsonNode root = STRING_MAPPER.readTree(jsonStr);
+            JsonNode root = OBJECT_MAPPER.readTree(jsonStr);
             JsonNode node = root.get(fieldName);
             if (Objects.isNull(node))  {
                 return null;
             }
-            return node.isValueNode() ? node.asText() : STRING_MAPPER.writeValueAsString(node);
+            return node.isValueNode() ? node.asText() : OBJECT_MAPPER.writeValueAsString(node);
         } catch (IOException e) {
             throw new UtilException("error reading json field", e);
         }
@@ -100,7 +92,7 @@ public class JacksonUtils {
      */
     public static <T> T json2Pojo(String jsonStr, Class<T> clazz) {
         try {
-            return STRING_MAPPER.readValue(jsonStr, clazz);
+            return OBJECT_MAPPER.readValue(jsonStr, clazz);
         } catch (IOException e) {
             throw new UtilException("error transform json to pojo", e);
         }
@@ -118,7 +110,7 @@ public class JacksonUtils {
      */
     public static <T> T json2Pojo(String jsonStr, TypeReference<T> typeReference) {
         try {
-            return STRING_MAPPER.readValue(jsonStr, typeReference);
+            return OBJECT_MAPPER.readValue(jsonStr, typeReference);
         } catch (IOException e) {
             throw new UtilException("error transform json to pojo", e);
         }
@@ -133,7 +125,7 @@ public class JacksonUtils {
      */
     public static Map<String, String> json2Map(String jsonStr) {
         try {
-            return STRING_MAPPER.readValue(jsonStr, new TypeReference<HashMap<String, String>>() {});
+            return OBJECT_MAPPER.readValue(jsonStr, new TypeReference<HashMap<String, String>>() {});
         } catch (IOException e) {
             throw new UtilException("error transform json to map", e);
         }
@@ -147,7 +139,7 @@ public class JacksonUtils {
      */
     public static String pojo2Json(Object pojo) {
         try {
-            return STRING_MAPPER.writeValueAsString(pojo);
+            return OBJECT_MAPPER.writeValueAsString(pojo);
         } catch (IOException e) {
             throw new UtilException("error transform pojo to json", e);
         }
@@ -174,8 +166,8 @@ public class JacksonUtils {
      */
     public static <T> T json2List(String jsonStr, Class<T> collectionClass, Class<?>... elementClasses) {
         try {
-            JavaType javaType = STRING_MAPPER.getTypeFactory().constructParametricType(collectionClass, elementClasses);
-            return STRING_MAPPER.readValue(jsonStr, javaType);
+            JavaType javaType = OBJECT_MAPPER.getTypeFactory().constructParametricType(collectionClass, elementClasses);
+            return OBJECT_MAPPER.readValue(jsonStr, javaType);
         } catch (IOException e) {
             throw new UtilException("error transform to ObjList", e);
         }

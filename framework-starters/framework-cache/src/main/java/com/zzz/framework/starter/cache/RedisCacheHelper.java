@@ -3,7 +3,7 @@ package com.zzz.framework.starter.cache;
 import cn.hutool.core.util.StrUtil;
 import com.google.common.base.Joiner;
 import com.zzz.framework.common.util.JacksonUtils;
-import com.zzz.framework.starter.cache.model.code.RedisKeyPrefix;
+import com.zzz.framework.starter.core.model.code.RedisKeyPrefix;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
