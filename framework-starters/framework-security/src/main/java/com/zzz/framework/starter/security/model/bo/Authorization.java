@@ -1,6 +1,8 @@
 package com.zzz.framework.starter.security.model.bo;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -12,6 +14,7 @@ import java.time.Instant;
  * @Datetime : 2023/5/11 14:15
  */
 @Data
+@NoArgsConstructor
 public class Authorization implements Serializable {
 
     private String id;

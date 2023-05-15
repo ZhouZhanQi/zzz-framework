@@ -123,9 +123,9 @@ public class JacksonUtils {
      * @param jsonStr
      * @return
      */
-    public static Map<String, String> json2Map(String jsonStr) {
+    public static Map<String, Object> json2Map(String jsonStr) {
         try {
-            return OBJECT_MAPPER.readValue(jsonStr, new TypeReference<HashMap<String, String>>() {});
+            return OBJECT_MAPPER.readValue(jsonStr, new TypeReference<HashMap<String, Object>>() {});
         } catch (IOException e) {
             throw new UtilException("error transform json to map", e);
         }
@@ -151,7 +151,7 @@ public class JacksonUtils {
      * @param pojo
      * @return
      */
-    public static Map<String, String> pojo2Map(String pojo) {
+    public static Map<String, Object> pojo2Map(Object pojo) {
         return json2Map(pojo2Json(pojo));
     }
 
