@@ -23,7 +23,10 @@ public enum SecurityRedisKeyPrefix implements RedisKeyPrefix {
      */
     TOKEN_CONSENT("token:consent", false),
 
-    TOKEN_INFO("token:info", false),
+    TOKEN_STATE("token::state", false),
+    TOKEN_CODE("token::code", false),
+    TOKEN_ACCESS_TOKEN("token::access_token", false),
+    TOKEN_REFRESH_TOKEN("token::refresh_token", false),
     ;
 
     private final String key;

@@ -1,7 +1,7 @@
 package com.zzz.framework.common.exceptions;
 
-import cn.hutool.core.util.StrUtil;
 import com.zzz.framework.common.model.code.BaseExceptionCode;
+import org.dromara.hutool.core.text.StrUtil;
 
 /**
  * <pre>

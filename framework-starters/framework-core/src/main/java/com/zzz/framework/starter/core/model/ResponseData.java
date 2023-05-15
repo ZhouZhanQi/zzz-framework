@@ -1,7 +1,7 @@
 package com.zzz.framework.starter.core.model;
 
-import cn.hutool.core.util.StrUtil;
-import cn.hutool.crypto.SecureUtil;
+import org.dromara.hutool.core.text.StrUtil;
+import org.dromara.hutool.crypto.SecureUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

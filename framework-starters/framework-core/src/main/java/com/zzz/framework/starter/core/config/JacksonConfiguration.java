@@ -1,6 +1,6 @@
 package com.zzz.framework.starter.core.config;
 
-import cn.hutool.core.date.DatePattern;
+import org.dromara.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;

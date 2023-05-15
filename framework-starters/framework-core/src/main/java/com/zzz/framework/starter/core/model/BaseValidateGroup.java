@@ -1,6 +1,7 @@
 package com.zzz.framework.starter.core.model;
 
-import javax.validation.groups.Default;
+
+import jakarta.validation.groups.Default;
 
 /**
  * <pre>
@@ -14,7 +15,7 @@ public class BaseValidateGroup {
     /**
      * 新增数据校验分组
      */
-    public interface InsertGroup extends Default{
+    public interface InsertGroup extends Default {
     }
 
 

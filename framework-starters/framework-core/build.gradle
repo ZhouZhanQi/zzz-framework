@@ -5,12 +5,10 @@ dependencies {
     implementation project(":framework-common:framework-util")
     api("com.alibaba:transmittable-thread-local:${transmittableVersion}")
 
-    implementation("javax.servlet:javax.servlet-api:${javaxServletVersion}")
-
     api('org.springframework.boot:spring-boot-starter-json')
     api('org.springframework.boot:spring-boot-starter-log4j2')
     api('org.springframework.boot:spring-boot-starter-validation')
-    api('com.squareup.okhttp3:okhttp:${okhttpVersion}')
+    api('com.squareup.okhttp3:okhttp')
     api("com.baomidou:mybatis-plus-core:${mybatisplusVersion}")
     implementation('org.springframework.boot:spring-boot-configuration-processor')
     implementation('org.springframework.boot:spring-boot-autoconfigure')

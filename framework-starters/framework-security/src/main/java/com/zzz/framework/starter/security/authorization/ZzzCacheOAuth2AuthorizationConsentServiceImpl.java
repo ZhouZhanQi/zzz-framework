@@ -1,6 +1,6 @@
 package com.zzz.framework.starter.security.authorization;
 
-import cn.hutool.core.util.StrUtil;
+import org.dromara.hutool.core.text.StrUtil;
 import com.zzz.framework.common.util.AssertUtils;
 import com.zzz.framework.starter.cache.RedisCacheHelper;
 import com.zzz.framework.starter.security.model.code.SecurityExceptionCode;

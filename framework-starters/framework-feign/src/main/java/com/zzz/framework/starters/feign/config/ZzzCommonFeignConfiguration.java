@@ -1,7 +1,7 @@
 package com.zzz.framework.starters.feign.config;
 
-import cn.hutool.core.date.DatePattern;
-import cn.hutool.http.ContentType;
+import org.dromara.hutool.core.date.DatePattern;
+import org.dromara.hutool.http.ContentType;
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;

@@ -1,6 +1,6 @@
 package com.zzz.framework.starter.cache;
 
-import cn.hutool.core.util.StrUtil;
+import org.dromara.hutool.core.text.StrUtil;
 import com.google.common.base.Joiner;
 import com.zzz.framework.common.util.JacksonUtils;
 import com.zzz.framework.starter.core.model.code.RedisKeyPrefix;

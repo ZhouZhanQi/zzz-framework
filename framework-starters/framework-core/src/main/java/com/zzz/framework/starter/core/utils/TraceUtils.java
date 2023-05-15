@@ -1,14 +1,12 @@
 package com.zzz.framework.starter.core.utils;
 
-import cn.hutool.http.HttpUtil;
 import com.zzz.framework.starter.core.model.constants.CoreConstants;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
 
-import javax.servlet.http.HttpServletRequest;
-import java.nio.charset.Charset;
 
 /**
  * <pre>

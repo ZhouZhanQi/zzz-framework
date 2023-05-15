@@ -6,8 +6,8 @@ dependencies {
     implementation ("org.apache.velocity:velocity-engine-core:${velocityEngineVersion}")
     implementation ("mysql:mysql-connector-java:${mysqlVersion}")
     implementation ("p6spy:p6spy:${p6spyVersion}")
-    api("com.baomidou:mybatis-plus-boot-starter:${mybatisplusVersion}")
-    implementation ("com.baomidou:dynamic-datasource-spring-boot-starter:${dynamicDatasourceVersion}")
+    api("com.baomidou:mybatis-plus-boot3-starter:${mybatisplusVersion}")
+    implementation ("com.baomidou:dynamic-datasource-spring-boot3-starter:${dynamicDatasourceVersion}")
     implementation ("com.baomidou:mybatis-plus-generator:${mybatisplusGeneratorVersion}")
 
     implementation("org.springframework.boot:spring-boot-starter-data-elasticsearch")

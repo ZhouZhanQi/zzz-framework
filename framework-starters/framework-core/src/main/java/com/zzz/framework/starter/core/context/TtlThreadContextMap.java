@@ -1,6 +1,6 @@
 package com.zzz.framework.starter.core.context;
 
-import cn.hutool.core.map.MapUtil;
+import org.dromara.hutool.core.map.MapUtil;
 import com.alibaba.ttl.TransmittableThreadLocal;
 import com.google.common.collect.Maps;
 import org.apache.logging.log4j.spi.ThreadContextMap;
